@@ -1,0 +1,1182 @@
+/* 
+    ---------------------------------------------------------------------------------------------------------------------------
+                                                NOTA A LA CÁTEDRA                                                               
+    ---------------------------------------------------------------------------------------------------------------------------
+    Trabajo práctico especial, grupo B8: John David Molina Velarde (comisión B3) y Mercedes Médico (Comisión A3).
+
+    El trabajo práctico consiste en varias páginas, todas con un header con el correspondiente menú responsive y un footer con
+    los vínculos a las social media de Cocina B8 (no las hemos generado las cuentas en las social media,  así que simplemente 
+    se vinculan a la página raiz de Facebook, Twitter (ahora X), Whatsapp, e Instagram). Además el footer tiene un checkbox
+    para seleccionar una paleta alternativa de colores "Modo oscuro", cuya selección persiste al cambiar entre las páginas
+    (manteniendo la paleta de colores seleccionadas) y entre sesiones (recordando la selección de colores la próxima vez que
+    se ingrese a la página).
+    Cada una de las páginas es responsive, ya sea con Flex, con Grid o con combinación de ambos:
+        index.html       : Página principal con noticias en tajetas y vínculos externos a las noticias originales.
+        acerca.html      : Página que habla de los autores y muestra una tabla responsive con lista de alumnos del último curso.
+        inscripcion.html : Página de "contacto" que la vemos como una página para inscribirse al curso. Acá implementamos un
+                           captcha con un botón de recargar captcha (el cual es generado aleatoriamente con combinaciones de
+                           letras y números desde Javascript).
+        recetas.html     : Las tarjetas 3D (con un hermoso efecto de sensación 3D de la tarjeta que se da vuelta al pasar el 
+                           mouse por arriba). Cada una de las tarjetas tiene vínculo con una receta particular de cada plato:
+                                R-albondiga-veggie.html
+                                R-anticuchos.html
+                                R-arrolladitos-palta.html
+                                R-budin-arroz-y-verduras.html
+                                R-canelones.html
+                                R-guiso-pampeano.html
+                                R-tortilla-espanola.html
+                                R-empanadas-saltenas.html
+                                R-tarta-zapallo.html
+
+    Las paletas de colores tienen los colores definidos como variables que son reutilizados en todo el CSS, de forma que resulte
+    simple definir los colores en un solo lugar centralizado, fácil de cambiar.
+
+    El header y footer son el mismo para todas los html, cambiando solo el contenido del main.
+    El logo del título del header tiene una pequeña animación para hacerlo más ameno.
+
+    Cumple los puntos de la consigna:
+    1.- Es responsive y mobile first. 
+        a) Soporta mobile (corte 480px), tablet (corte 768px), notebook (corte 1024px), pantalla grande
+        b) Menú responsive. En modo celular menú oculto, se despliega con el hamburguer.
+        c) Tabla con los alumnos del último curso totalmente responsive en la pagina "acerca.html" (bajo el menú aparece como "Nosotros")
+        d) En varias páginas usa Flex, Grid y ambos.
+    2.- Usa HTML Semántica: usa Header, footer, Main, article, aside, etc.
+    3.- En la página "inscripción.html" (bajo el menú aparece como "Inscripción") tenemos un formulario de contacto/inscripción totalemente
+        responsive con un captcha generado aleatoriamente desde javascript.
+    4.- Incluimos varios screenshots de la pantalla principal y de ejemplos de algunas de las otras páginas.
+
+    Respecto a los requerimientos:
+    1.- tiene más de 3 archivos html. En particular tiene 13 archivos html, contando el index.html (bajo el menú aparece como "Inicio")
+    2.- Tiene una barra de navegación que siempre está presente en todas las paginas.
+    3.- Tiene varias listas diferentes de la navegación. Por ejemplo, en acerca.html (bajo el menú aparece como "Nosotros") hay una lista
+        de los autores de la pagina. Y en cada una de las 9 páginas de recetas que incluímos, hay listas de ingredientes y listas de 
+        procedimientos a seguir.
+    4.- Se incluye una tabla totalmente responsive con los alumnos del último curso en la pagina "acerca.html" (bajo el menú aparece 
+        como "Nosotros").
+    5.- En la página "inscripción.html" (bajo el menú aparece como "Inscripción") tenemos un formulario de contacto/inscripción totalemente
+        responsive con un captcha generado aleatoriamente desde javascript.
+    6.- Tenemos múltiples imágenes, varias en cada noticia de la página Inicio (index.htm), así como en una de las 13 páginas que se muestran
+        hay varias imágenes alusivas al tema.
+    7.- El captcha de la página inscripción.html se genera aleatoriamente desde JavaScript, y también es validada desde JavaScript.
+
+    Respecto a los Opcionales:
+    1.- Los datos del captcha son generados aleatoriamente.
+    2.- En el footer de cada página se tiene un check box para seleccionar una paleta de colores alternativa llamada "Modo oscuro". La 
+        elección de dicha paleta de colores se recuerda entre las páginas (es decir, se mantiene si se cambia de página) y también se
+        recuerda entre las sesiones (por más que se salga de la página, la próxima vez que ingrese en ella se recuerda la última elección
+        de paleta de colores realizada por el usuario). Es decir, hay persistencia en la paleta elegida por el usuario.
+
+    ---------------------------------------------------------------------------------------------------------------------------
+                                                PARTE DOS DEL TRABAJO PRACTICO                                                               
+    ---------------------------------------------------------------------------------------------------------------------------
+    Tabla dinámica por API REST usando mockapi (https://666f2da5f1e1da2be5223295.mockapi.io/api/v1/alumnos):
+    Se mueve la tabla dinámica a "alumnos.html". Dicha tabla está vinculada con el servicio API Rest mockapi, de donde se obtiene
+    la infomación y donde se almacena la misma. Cada fila está asociado con un alumno JSON del servicio web mencionado. 
+    Cada fila tiene un botón "Editar" y un boton "Borrar" que permite editar o eliminar los datos de ESA FILA. Cuando se edita la
+    información de una fila, se edita directamente sobre esa fila (no en un formulario aparte) porque de esa forma la interfaz es
+    más amigable. Observe que cuando se está editando los datos de un alumno, se deshabilitan todos los botones no pertinentes para
+    indicar al usuario cuáles botones puede usar y para que los otros botones no interfieran.
+
+    Observe que la tabla tiene un comportamiento totalmente responsive.
+    
+    A su vez hay un botón "Nuevo alumno" en la parte baja permite ingresar los datos del nuevo alumno EN LA MISMA TABLA (en una
+    fila adicional al final). Cada vez que se Edita una fila o cuando se da de Alta un alumno, a la derecha aparecen dos botones
+    "Aceptar"/"Cancelar" que realizan la modificación (guardando la info en mockapi) o revierten los cambios dejándolos como antes.
+    
+    En la parte baja se incluyen dos botones "Siguiente página" y "Página Previa" que permiten ir avanzando de a páginas entre 
+    los grupos de alumnos que se encuentran en mockapi. Observe que cuando no hay una página previa, el botón "Página previa" está
+    deshabilitado, así como "Página siguiente" cuando no hay una siguiente página.
+
+    
+
+    Se modificó la página para que funcione como SPA, con partial render, quedando una pantalla principal y cargando asincrónicamente
+    todas las demás páginas en el "main" del index.html.
+
+    Requerimientos:
+    - carga la tabla automáticamente al cargar la página de alumnos, usando el servicio Rest de mockapi
+    - Permite editar/borrar cada fila.
+    - Permite ingresar nuevos alumnos
+
+    Opcionales:
+    1.- Subida a un servicio host.
+    2.- SPA / Partial Render: se usa AJAX para la navegación de la página (técnica de partial render). 
+        La página no se refrescar completamente, cuando hago click en un link de la navigation bar se refresca sólo la porción main,
+        cargando la parte de información que cambia. 
+        Nota: se excluye del partial render los vínculos a páginas de noticias exteriores (infobae, clarín, etc.) por decisión de diseño
+              se cargarán en una pestaña nueva.
+    3.- Paginación: se traer la información del servicio rest de forma paginada. Para ello se usan los botones "siguiente página y 
+        "página previa" para navegar entre las páginas de grupos de alumnos.
+    4.- Creación de Items: Hay un botón "Nuevos alumno aleatorio" que genera aleatoriamente los datos de un alumno (cuantas veces se quiera)
+        y lo agrega al servicio. El nombres se elige aleatoriamente de entre 100 nombres y se combina con casi 70 apellidos aleatorios 
+        posibles (lo que da más de 7000 nombres completos posibles). Luego en base al nombre y apellido se genera aleatoriamente un mail 
+        tomando el nombre, o el apellido, o la primer letra del nombre y el apellido, o el nombre y la primer letra del apellido. A ello se
+        le pueden agregar en algunos casos un número de 2 dígitos y finalmente se asocia a uno de 5 servicios comunes de mail.
+    5.- Filtrado: Se agregaron filtros de búsqueda en la tabla, mostrando solo los datos que cumplan el criterio, los demás datos 
+        no se ven. Existe un combo box para seleccionar si se desea filtrar los datos de la tabla, ya sea por "No filtrar", 
+        "Filtrar por nombre", "Filtrar por email" o "Filtrar por dni". Cuando se está eligiendo filtrar, se habilita un input para 
+        ingresar el nombre, mail o dni a buscar. Observe que si está elegida la opción "No filtrar" ese input y el botón de filtrado 
+        están deshabilitados
+
+Header: 
+    .contenedor_titulo
+        p #titulo
+    nav
+        a*5
+    menu hamburguer (solo aparece en modo de pantalla chica)
+
+Main:
+    acá aparecen las diferentes secciones según la página que se esté visualizando    
+
+Footer:
+    .contenedor_socialmedia{}
+            img*4
+    p check box de "Modo oscuro"
+    p Hecho por...
+*/
+
+
+@import "animacion.css"; /* animación del título */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+    scroll-behavior: smooth;
+} 
+
+/* Paleta de colores principal a usar*/
+:root {
+    --color-fondo: DodgerBlue; /*SteelBlue;*/ /*MediumSeaGreen;*//*orange;   */
+    --color-fondo-claro: #ceeaf9;
+    --color-hover: RoyalBlue;  /*Goldenrod;*/ /*Green;         *//*chocolate;*/
+    --color-disabled: rgba(100, 100, 100, 0.5); 
+    --color-texto: white;
+    --color-texto-oscuro: #222;
+    --color-sombra: black;
+    --sombra-menu: 2px 2px 4px var(--color-sombra); /* horiz vert blur color */
+    --sombra-btnmenu: 2px 2px 8px var(--color-sombra);
+    --sombra-titulo:3px 3px 4px var(--color-sombra), 0 0 25px var(--color-hover), 0 0 5px darkblue;
+
+    --color-bordebtn: rgba(0,0,0,0.3);
+    --color-sombrabtn: rgba(0,0,0,0.8);
+    --sombra-btn: 2px 2px 10px var(--color-sombrabtn);
+    --sombra-btnhover: 5px 5px 8px var(--color-sombrabtn);
+    
+    /*lienzo p/"oscurecer" la imagen p/leer mejor el texto sobre ella*/
+    --color-lienzoimg: rgba(100, 100, 100, 0.5); 
+    --lienzo: linear-gradient(0deg, var(--color-lienzoimg),var(--color-lienzoimg) );
+
+    --color-noticia:#444;
+    --background-noticia: #ececec;
+}
+
+/* Paleta de colores en modo oscuro*/
+.modoOscuro {
+    --color-fondo: darkslategray; /*indigo;*/  /*SteelBlue;*/ /*MediumSeaGreen;*//*orange;   */
+    --color-fondo-claro:#333; /* #ceeaf9; */
+    --color-hover: indigo; /*RoyalBlue;*/  /*Goldenrod;*/ /*Green;         *//*chocolate;*/
+    --color-disabled: rgba(100, 100, 100, 0.5); 
+    --color-texto: azure;
+    --color-texto-oscuro: white;
+    --color-sombra: black;
+    --sombra-menu: 2px 2px 4px var(--color-sombra); /* horiz vert blur color */
+    --sombra-btnmenu: 2px 2px 8px var(--color-sombra);
+    --sombra-titulo:3px 3px 4px var(--color-sombra), 0 0 25px var(--color-hover), 0 0 5px darkblue;
+
+    --color-bordebtn: rgba(0,0,0,0.3);
+    --color-sombrabtn: rgba(0,0,0,0.8);
+    --sombra-btn: 2px 2px 10px var(--color-sombrabtn);
+    --sombra-btnhover: 5px 5px 8px var(--color-sombrabtn);
+
+    /*lienzo p/"oscurecer" la imagen p/leer mejor el texto sobre ella*/
+    --color-lienzoimg: rgba(100, 100, 100, 0.5); 
+    --lienzo: linear-gradient(0deg, var(--color-lienzoimg),var(--color-lienzoimg) );
+
+    --color-noticia:#CCC;
+    --background-noticia: #333;
+}
+
+
+/****************** Pantalla chica < 576 MOBILE FIRST *******************/
+h1{ font-size: 4.5vw;} /*3.5em*/
+h2{ font-size: 3.4vw;} /*2.7em*/
+h3{ font-size: 2.5vw;}   /*2em*/
+p{ font-size: 1.25em;} /*1.25em*/
+li{ font-size: 2.5vw;}   /*1em*/
+
+/********************************************************************/
+/****                          HEADER                            ****/
+/********************************************************************/
+header { 
+    position: fixed;
+    background-color: var(--color-fondo); 
+    width: 100%;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.contenedor_titulo{
+    font-weight: bold;
+    font-size: 4.6vw;
+    color: var(--color-texto);
+    text-shadow:var(--sombra-titulo); 
+    /*name duration timing-function delay iteration-count direction fill-mode; */
+    animation: elastico 10s ease 5s infinite;
+}
+
+
+nav {
+    height: auto;  
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    z-index: 10;
+    box-shadow: 0px 0px 30px -20px rgba(0,0,0,0.5);
+    transition: all 300ms;
+    display:none; /*que no se vea el menu en mobile*/
+    flex-direction: column;
+}
+    
+nav ul li{
+    list-style: none;
+}
+
+nav a {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-texto);
+    text-shadow: var(--sombra-menu);
+    background-color: var(--color-fondo);
+    padding: 20px 0px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 300ms linear;
+}
+
+.menu_mostrado{ /*Clase manipulada por JS*/
+    height: auto;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    overflow: hidden;
+    z-index: 10;
+    box-shadow: 0px 0px 30px -20px rgba(0,0,0,0.5);
+    transition: all 300ms;
+    display: flex;
+    flex-direction: column;
+}
+
+nav a:hover {
+    background-color: var(--color-hover);
+    border-radius: 10px;
+    box-shadow: var(--sombra-btnmenu);
+    transform: translateX(5px) scale(1.1, 1.0);
+}
+
+.off {
+    display: inline-block; /* oculto el texto del menu, dejo solo los simbolos */
+}
+
+
+#icon_menu {
+    display: block; /* muestro el icono del menu*/
+    cursor: pointer;
+    padding: 10px; 
+    color: var(--color-texto);
+    text-align: center;
+    align-items: center;
+    filter: drop-shadow(var(--sombra-menu)); 
+    transform: translateY(-6px);
+}
+
+
+
+
+
+/********************************************************************/
+/****                           MAIN                             ****/
+/********************************************************************/
+
+#principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 70px;
+    text-align: center;
+    height: 110vh;
+    background-image: 
+        var(--lienzo),
+        url("../img/Sirviendo_plato1_900x0.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+#principal h1 {
+    color: var(--color-texto);
+    padding: 0 0 0.5em 0;
+}
+
+button, #principal a, .noticia a {
+    font-size: 1.25em;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 30px;
+    margin: 10px 0;
+    display: inline-block;
+    border-radius: 10px;
+    border: 2px solid var(--color-bordebtn);
+    box-shadow: var(--sombra-btn);
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+button:hover, #principal a:hover, .noticia a:hover {
+    background-color: var(--color-hover);
+    box-shadow: var(--sombra-btnhover);
+    transform: translate(2px,-2px);
+}
+
+button:disabled {
+    background-color: var(--color-disabled) ;
+    transform: none;
+}
+
+
+
+/**************************  NOTICIAS ***************************/
+
+#noticias{
+    background: black;
+    padding: 40px 10px;
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.noticia{
+    /* background: #1f6cb0;   */
+    color: var(--color-noticia); /*#444;*/
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin: 10px 10px 0 0;
+    background: var(--background-noticia);
+}
+    .noticia img{
+        max-width: 100%;
+    }
+    
+    .noticia h4{ /*fecha*/
+        color:var(--color-texto);
+        font-size: 13px;
+        padding: 10px 5px;
+        margin-top:-100px;
+    }
+    .noticia h2{ /*titulo de noticia*/
+        color:var(--color-texto);
+        font-size: 25px;
+        /* text-transform: uppercase; */
+        padding:0 5px 10px 5px;
+    }
+    .noticia h3{ /*copete*/
+        /* color:white; */
+        font-size: 20px;
+        /* text-transform: uppercase; */
+        padding:0 5px 10px 5px;
+    }
+
+    .noticia p{
+        padding: 0 5px;
+        /***************************************************************************/
+        /* desde aca el truco para que a la linea 15 recorte el texto poniendo ... */
+        display: -moz-box;
+        display: -webkit-box;
+        display:box;
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        box-orient: vertical;
+        -webkit-line-clamp: 15; /*muestra 15 lineas, despues ...*/
+        line-clamp: 15;         /* idem */
+        overflow: hidden;
+        /* hasta aca el truco para recortar texto sobrante */
+        /***************************************************/
+    }
+/************************* FIN NOTICIAS *************************/
+
+
+
+
+
+
+/**************************  NOSOTROS  **************************/
+#quienes_somos {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 92vh;
+    background-image: 
+        var(--lienzo), 
+        url("../img/equipococina.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: var(--color-texto);
+    font-size: 4.5vw;
+}
+
+#quienes_somos h1{
+    margin:0.5em;
+    padding-top: 30px;
+}
+
+#quienes_somos p{
+    padding: 0 50px;
+    margin: 0.5em;
+}
+
+#quienes_somos ul{
+    padding: 0 50px;
+    margin: 0.0em;
+    list-style: none;
+}
+
+
+.subrayado {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+}
+
+
+/**************************  FIN NOSOTROS  **************************/
+
+
+
+
+
+/************************  TABLA DE ALUMNOS  ************************/
+#listado_alumnos {
+    text-align: center;
+    background: var(--color-fondo-claro);
+    color: var(--color-texto-oscuro);
+    overflow-x: auto;
+}
+
+#listado_alumnos table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#listado_alumnos td {
+    padding: 10px;
+}
+
+#listado_alumnos tr {
+    border-top: 1px solid gray;
+    padding-top: 20px;
+}
+
+.btn_alumno{
+    font-size: 0.80em;
+    font-weight:normal;
+    padding: 5px 10px;
+    margin: 0;
+    display: inline-block;
+    border-radius: 10px;
+    border: 2px solid var(--color-bordebtn);
+    box-shadow: var(--sombra-btn);
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    cursor: pointer;
+    transition: all 0.2s linear;
+}
+
+#mensaje {
+    color: red;
+}
+
+/**************************  FIN ALUMNOS  **************************/
+
+
+
+
+
+/********************  TARJETAS 3D DE RECETAS *******************/
+main h2 {
+    background: var(--color-fondo-claro);
+    padding-top: 100px;
+    text-align: center;
+}
+
+.contenedor_tarjetas{
+    background: var(--color-fondo-claro);
+    margin: auto;
+    margin-top: 0px;
+    padding-top: 10px;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tarjeta_padre{
+    margin: 20px;
+    perspective: 1000px;
+}
+
+.tarjeta_padre:hover .tarjeta{
+    transform: rotateY(180deg);
+}
+
+
+.tarjeta{
+    width: 350px;
+    height: 430px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 1000ms;
+}
+
+.tarjeta h1 {
+    font-size: 2.5em;
+}
+
+.tarjeta_anverso{
+    background-size: cover;
+    background-position: center;
+}
+
+
+.tarjeta_anverso,
+.tarjeta_reverso{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    border-radius: 20px;
+}
+
+.tarjeta_reverso{
+    transform: rotateY(180deg);
+    background: white;
+}
+
+.contenido_tarjeta_anverso {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transform: translateZ(60px);
+}
+
+.lienzo_fondo_tarjeta{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.4);
+    border-radius: 20px;
+}
+
+.contenido_tarjeta_reverso{
+    padding: 40px;
+    text-align: center;
+    transform: translateZ(60px);
+}
+
+.contenido_tarjeta_reverso p{
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.contenido_tarjeta_reverso a,
+.contenido_tarjeta_reverso input {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 10px;
+    margin-top: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    color: var(--color-texto);
+    background: #58B0F6;
+    box-shadow: 1px 1px 30px -5px #58B0F6;
+    border-radius: 10px;
+    transition: box-shadow 600ms;
+}
+
+.contenido_tarjeta_reverso a:hover,
+.contenido_tarjeta_reverso input:hover {
+    box-shadow: 1px 1px 30px 0px #449de6;
+}
+
+/*** Definición de imágenes de fondo de las tarjetas 3D ***/
+#receta-albondiga-veggie {
+    background-image: url(../img/receta-albondiga-veggie.jpg);
+}
+#receta-anticuchos {
+    background-image: url(../img/receta-anticuchos.jpg);
+}
+#receta-arrolladitos-palta {
+    background-image: url(../img/receta-arrolladitos-palta.jpg);
+}
+#receta-budin-arroz-y-verduras {
+    background-image: url(../img/receta-budin-arroz-y-verduras.jpg);
+}
+#receta-canelones {
+    background-image: url(../img/receta-canelones.jpg);
+}
+#receta-guiso-pampeano {
+    background-image: url(../img/receta-guiso-pampeano.jpg);
+}
+#receta-tortilla-espaniola {
+    background-image: url(../img/receta-tortilla-espaniola.jpg);
+}
+#receta-empanadas-saltenias {
+    background-image: url(../img/receta-empanadas-saltenias.jpg);
+}
+#receta-tarta-zapallo {
+    background-image: url(../img/receta-tarta-zapallo.jpg);
+}
+
+/******************  FIN TARJETAS 3D DE RECETAS ******************/
+
+
+
+
+
+
+
+/********************  RECETAS DE PLATOS   *******************/
+.contenedor_receta {
+    margin: 0 40px;
+    padding: 70px 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+    .contenedor_receta h2 {
+        color: var(--color-texto);
+        text-shadow: var(--sombra-titulo);
+        background: none;
+        padding: 0 5px 200px 5px;
+        margin-top: -25vh;
+    }
+
+    .contenedor_receta h3{
+        font-size: 20px;
+        padding: 2vh 5px 10px 5px;
+        text-align: center;
+    }
+
+    .contenedor_receta h4{
+        padding: 10px 25px 0 25px;
+    }
+
+    .contenedor_receta ul {
+        list-style-type: none;
+        padding-left: 100px;
+        padding-right: 30px;
+    }
+
+    .contenedor_receta p {
+        padding: 10px 25px;
+    }
+
+    .imagen_receta {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+        /* background-image: var(--lienzo); */
+    }
+
+    .imagen_receta img {
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .contenedor_receta .ingredientes {
+        background: var(--color-fondo-claro);
+        background-image: url("../img/ingredientes.svg");
+        background-repeat: no-repeat;
+        padding: 25px 20px 0 10px;
+    }
+
+    .contenedor_receta .ingredientes h3{
+        text-align: right;
+        padding-bottom: 50px;
+    }
+
+    .contenedor_receta .procedimiento {
+        background-image: url("../img/tablapicarv.jpg");
+        background-size: cover;
+        /*background-position: center;*/
+        padding-top: 220px;
+
+        /*position: relative;
+        opacity: 0.65;*/
+        /*background-position: center;*/
+        background-repeat: no-repeat;
+        /*background-size: cover;*/
+        /*height: 100%;*/
+    }
+
+    .contenedor_receta .nutricional {
+        background: #BB8FCE;
+        border-radius: 20px;
+        padding: 10px 10px;
+    }
+
+/******************  FIN RECETAS DE PLATOS  ******************/
+
+
+
+
+
+
+
+
+/******************  FORMULARIO DE INSCRIPCION ******************/
+.container_inscripcion {
+    background: #181818;
+    color: var(--color-texto);
+    line-height: 1.6;
+    font-family: 'Quicksand', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2em;
+}
+
+.logo {
+    text-align: center;
+    font-size: 3em;
+    padding-top: 2.5vw;
+    padding-bottom: 0.5em;
+}
+
+.logo span {
+    color: var(--color-fondo);
+}
+
+.envoltorio_inscripcion_contacto, .contenedor_captcha {
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, .3);
+    display: grid;
+    grid-template-columns: 1fr;   
+}
+
+.envoltorio_inscripcion_contacto > * {
+    padding: 1em;
+}
+
+.formulario_inscripcion {
+    background: #222222;
+}
+
+.formulario_inscripcion form {
+    display: grid;
+    grid-template-columns: 1fr; /*  1fr 1fr; */
+}
+
+.formulario_inscripcion form label {
+    display: block;
+}
+
+.formulario_inscripcion form p {
+    margin: 0;
+    padding: 1em;
+    font-size: 1em;
+}
+
+.formulario_inscripcion form .block {
+    grid-column: 1 / 2;
+}
+
+
+.formulario_inscripcion form input,
+.formulario_inscripcion form textarea {
+    width: 100%;
+    padding: .7em;
+    border: none;
+    background: none;
+    outline: 0;
+    color: var(--color-texto);
+    border-bottom: 1px solid var(--color-fondo);
+}
+
+
+ .formulario_inscripcion form button {
+    width: 100%;
+}
+
+
+
+/* CAPTCHA */
+.captcha-area, .input-captcha {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+#reload-btn, #check-btn {
+    width:90px;
+}
+
+.captcha-img {
+    min-width: 150px;
+    user-select: none;
+    background: #000;
+    border-radius: 5px;
+    position: relative;
+}
+
+.captcha-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    opacity: 0.80; /*0.95*//*permite ver mas o menos claro el captcha*/
+}
+
+.captcha-img .captcha {
+    position: absolute;
+    left:50%;
+    top: 50%;
+    width: 100%;
+    color: #fff;
+    font-size: 2.7vw;
+    text-align: center;
+    letter-spacing: 4px;
+    transform: translate(-50%, -50%) rotate(8deg) skewX(45deg);
+    text-shadow: 0px 0px 2px #b1b1b1;
+}
+
+
+.status-captcha {
+    color:red;
+}
+
+/* INFO DE CONTACTO */
+.info_contacto {
+    background: #000;
+}
+
+.info_contacto h4, .info_contacto ul, .info_contacto p, .info_contacto iframe{
+    text-align: center;
+}
+
+.info_contacto h4 {
+    margin: 1em 0 0 0;
+}
+
+.info_contacto ul {
+    list-style: none;
+    padding: 0;
+}
+
+/***************** FIN FORMULARIO DE INSCRIPCION ****************/
+
+
+
+
+
+
+
+
+/********************************************************************/
+/****                         FOOTER                             ****/
+/********************************************************************/
+footer  {
+    background-color: var(--color-fondo);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+footer .contenedor_socialmedia {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+footer p { 
+    padding-right: 20px;
+    padding-left: 20px;
+    text-align: center;
+}
+
+
+
+.contenedor_socialmedia {
+    padding-bottom: 0px;
+    padding-left: 20px;
+    filter: drop-shadow(var(--sombra-menu)); 
+}
+
+.contenedor_socialmedia a:hover {
+    filter: contrast(300%) drop-shadow(var(--sombra-btnhover));
+    transform: scale(1.3,1.3);
+}
+
+footer p, footer p a { 
+    padding-right: 20px;
+    color: var(--color-texto);
+    text-shadow: var(--sombra-menu);
+    text-decoration: none;
+}
+
+footer p a:hover {
+    text-shadow: var(--sombra-btnhover);
+}
+
+
+
+
+
+
+
+/****************************************************************************
+ ****                           Media queries                            ****
+ ****************************************************************************/
+
+/****************** Pantalla mediana >= 480 *******************/
+@media screen and (min-width: 480px) { 
+
+   
+    h1{ font-size: 5.0vw;}
+    
+    #noticias{
+        grid-template-columns: 1fr; /* las noticias solo 1 columna */
+    }
+    
+    #quienes_somos {
+        font-size: 3.0vw;
+    }
+
+    .contenedor_receta {
+        grid-template-columns: 1fr;
+    }
+
+    .contenedor_receta .ingredientes h3{
+        padding-bottom: 50px;
+    }
+
+    .contenedor_receta .procedimiento {
+        background-image: url("../img/tablapicarv.jpg");
+        padding-top: 220px;
+    }
+
+    /*footer .contenedor_footer {
+        flex-direction: column;
+        justify-content: center;
+    }*/
+}
+
+
+
+
+
+
+/****************** Pantalla grande >= 768 *******************/
+/* de acá para arriba pasa de menu hamburguesa a menu horizontal*/
+@media screen and (min-width: 768px) { 
+    /* Header y menu */
+    nav {
+        height:100%;
+        position:static;
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+        padding: 0px 20px;
+    }
+
+    #icon_menu { 
+        display:none; /* oculto en pantalla grande */
+    }
+    
+    .off {
+        display:block ; /* muestro el texto del menu */
+    }
+
+    
+    .menu_mostrado{ /*Clase manipulada por JS*/
+        height: auto;
+        position: static;
+        display: flex;
+        flex-direction: row;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        padding: 0px 20px;
+    }
+
+    nav ul li a {
+        color: var(--color-texto);
+        text-shadow: var(--sombra-menu);
+        padding: 10px;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        transition: all 300ms linear;
+    }
+
+
+    nav ul li a:hover {
+        transform: translateY(-5px) scale(1.1, 1.0);
+        background-color: var(--color-hover);
+        border-radius: 10px;
+        box-shadow: var(--sombra-btnmenu);
+    }
+
+    li{ font-size: 2vw;}
+
+    #titulo {
+        font-size: 4.5vw;
+    }
+
+    /* Noticias del main */    
+    #noticias{
+        grid-template-columns: 1fr 1fr; /* las noticias solo 2 columnas */
+    }
+
+
+    /* Acerca de nosotros */ 
+    #quienes_somos {
+        font-size: 2.5vw;
+    }
+
+    /* Tabla de listado de alumnos */
+    #listado_alumnos td {
+        padding: 12px;
+    }
+
+    #listado_alumnos table {
+        margin-bottom: 30px;
+    }
+
+    #listado_alumnos table, #listado_alumnos th, #listado_alumnos td {
+        border: 1px solid gray;
+    }
+
+
+    /* Inscripcion/contacto */
+    .container_inscripcion {
+        padding: 0 1.5em;
+
+    }
+
+    .envoltorio_inscripcion_contacto {
+        display: grid;
+        grid-template-columns: 1fr; /* 2fr 1fr; */
+    }
+    
+    .envoltorio_inscripcion_contacto > * {
+        padding: 2em;
+    }
+
+    .formulario_inscripcion form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .formulario_inscripcion form .block {
+        grid-column: 1 / 3;
+    }
+
+    .captcha-img img {
+        opacity: 0.95; /*0.95*//*permite ver mas o menos claro el captcha*/
+    }
+
+
+
+    /* Receta */
+    .contenedor_receta {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contenedor_receta .ingredientes h3{
+        padding-bottom: 100px;
+    }
+
+    
+    
+    /* Footer */
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+}
+
+
+
+/********* Estilos adicionales para hacer responsive la tabla de alumnos **********/
+@media screen and (max-width: 767px) {
+    #listado_alumnos td {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+
+    #listado_alumnos td::before {
+        content: attr(data-label) ":";
+        font-weight: bold;
+        display: inline-block;
+        width: 30%;
+        margin-right: 5px; /*10px;*/
+    }
+
+    #listado_alumnos table thead {
+        display: none;
+    }
+}
+
+
+
+
+
+/*********************** Pantalla muy grande >= 1024 **************************/
+@media screen and (min-width: 1024px) {
+    #noticias{
+        grid-template-columns: 1fr 1fr 1fr; /*noticias a 3 columnas*/
+    }   
+
+    .envoltorio_inscripcion_contacto {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    #quienes_somos {
+        font-size: 1.5vw;
+    }
+}
+
+
+
+
+
+
+

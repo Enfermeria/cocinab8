@@ -1,0 +1,41 @@
+
+      
+      <section id="listado_alumnos">
+        <h2>Alumnos del último curso</h2>
+        <table>
+          <thead>
+              <tr>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>DNI</th>
+                  <th>Nota</th>
+              </tr>
+          </thead>
+          <tbody id="tabla"> 
+              
+          </tbody>
+        </table>
+
+        <p id="mensaje"></p>
+
+        <div>
+          Filtrar por: 
+          <select name="cbfiltrar" id="cbfiltrar" class="btn_alumno" disabled>
+            <option value="no filtrar">no filtrar</option>
+            <option value="por nombre">por nombre</option>
+            <option value="por email" >por email</option>
+            <option value="por dni"   >por dni</option>
+          </select>
+          <input type="text" name="txtfiltro" id="txtfiltro" size="30" class="btn_alumno" disabled>
+          <button class="btn_alumno btn_filtrar" disabled><i class="fa fa-filter" aria-hidden="true"></i>&nbsp;Filtrar</button>
+        </div>
+
+        <div>
+          <button class="btn_alumno btn_previo"         disabled><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Anterior página</button>
+          <button class="btn_alumno btn_alta"           disabled><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Nuevo alumno</button>
+          <button class="btn_alumno btn_alta_aleatorio" disabled><i class="fa fa-random" aria-hidden="true"></i><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Nuevo alumno aleatorio</button>
+          <button class="btn_alumno btn_sgte"           disabled>Siguiente página&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
+      </section>
+
+

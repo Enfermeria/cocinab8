@@ -1,0 +1,107 @@
+
+    <div class="container_inscripcion">
+      <br>
+      <h1 class="logo">Inscríbase <span>Ya!!</span></h1>
+
+      <div class="envoltorio_inscripcion_contacto">
+        <div class="formulario_inscripcion">
+          <h3>Inscripción y Contacto</h3>
+          <form action="" id="formulario" method="get">
+            <p>
+              <label for="nombre">Apellido y Nombre</label>
+              <input 
+                type="text" 
+                name="nombre" 
+                id="nombre" 
+                placeholder="Ingrese su nombre"
+                required 
+                pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" 
+                title="Sólo letras" 
+                minlength="3" 
+                maxlength="40"
+              >
+            </p>
+            <p>
+              <label for="email">Email</label>
+              <input 
+                type="email" 
+                name="email" 
+                id="email"
+                placeholder="Ingrese su correo"
+                autocomplete="off"
+                type="email"
+                required
+                pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$"
+                title="Ingrese un email válido"
+              >
+            </p>
+            <p>
+              <label for="telefono">Número telefónico</label>
+              <input 
+                type="tel" 
+                name="telefono" 
+                id="telefono"
+                placeholder="Ingrese su teléfono"
+                autocomplete="off"
+                title="Ingrese un teléfono válido"
+              >
+            </p>
+            <p>
+              <label for="sede">Elija una sede:</label>
+              <select id="sede" name="sede">
+                <option value="tandil">Tandil</option>
+                <option value="capital">Capital Federal</option>
+              </select>
+            </p>
+            <p class="block">
+              <label for="comentarios">Comentarios</label>
+              <textarea name="comentarios" id="comentarios" rows="3"></textarea>
+            </p>
+
+            <!-- CAPTCHA -->
+            <div class="contenedor_captcha">
+              <div class="captcha-area">
+                <div class="captcha-img">
+                    <img src="img/captcha-bg2.jpg" alt="fondo captcha">
+                    <span class="captcha"></span>
+                </div>
+                <button id="reload-btn"><i class="fas fa-redo-alt"></i></button>
+              </div>
+              <div class="input-captcha">
+                <input type="text" placeholder="Escribir Captcha" maxlength="6" spellcheck="false" required>
+                <!--  <button id="check-btn">✔️</button> -->
+              </div>
+              <div class="status-captcha"></div>
+            </div>
+          <!-- FIN CAPTCHA -->  
+
+            <p class="block">
+              <button type="submit">Inscribirse</button>
+            </p>
+          </form>
+        </div>
+
+
+        <aside class="info_contacto">
+          <h4>Sede Tandil</h4>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Mosconi 1384</li>
+            <li><i class="fas fa-phone"></i> (249) 456 1234</li>
+            <li><i class="fas fa-envelope-open-text"></i> jd_v@yahoo.com</li>
+          </ul>
+          <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.9009540851434!2d-59.15084038517001!3d-37.29748117984914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9591203567fd435f%3A0x7a2205586bd11355!2sMosconi%201384%2C%20Tandil%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1665834133978!5m2!1ses!2sar" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+
+          <h4>Sede Capital Federal</h4>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> Rivadavia 1435</li>
+            <li><i class="fas fa-phone"></i> (11) 4567 1234</li>
+            <li><i class="fas fa-envelope-open-text"></i> cocinab8@gmail.com</li>
+          </ul>
+          <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.8234924017033!2d-58.38895138526062!3d-34.60862458045819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac4ccf30b73%3A0xc3694eb07550e8df!2sRivadavia%201435%2C%20C1033AAE%20CABA!5e0!3m2!1ses!2sar!4v1665837611798!5m2!1ses!2sar" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+          
+        </aside>
+      </div>
+
+    </div>
+
+  
