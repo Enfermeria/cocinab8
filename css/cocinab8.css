@@ -98,7 +98,10 @@
     - Permite ingresar nuevos alumnos
 
     Opcionales:
-    1.- Subida a un servicio host.
+    1.- Subida a un servicio host: se hizo un deploy del sitio en github. El vínculo para ver el sitio es:
+            https://enfermeria.github.io/cocinab8/index.html 
+        La api web del mockapi está en:
+            https://666f2da5f1e1da2be5223295.mockapi.io/api/v1/alumnos
     2.- SPA / Partial Render: se usa AJAX para la navegación de la página (técnica de partial render). 
         La página no se refrescar completamente, cuando hago click en un link de la navigation bar se refresca sólo la porción main,
         cargando la parte de información que cambia. 

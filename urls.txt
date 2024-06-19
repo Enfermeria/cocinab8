@@ -1,0 +1,5 @@
+Subida a un servicio host: se hizo un deploy del sitio en github. El vínculo para ver el sitio es:
+            https://enfermeria.github.io/cocinab8/index.html 
+        
+La api web del mockapi está en:
+            https://666f2da5f1e1da2be5223295.mockapi.io/api/v1/alumnos
