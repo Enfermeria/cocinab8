@@ -1,5 +1,6 @@
 "use strict";
 
+const main = document.querySelector("main");
 //Para mostrar u ocultar el menu hamburguer
 document.getElementById("icon_menu").addEventListener("click", function(){ //alterna entre mostrar el menu o dejarlo hamburguer
     document.querySelector("nav").classList.toggle("menu_mostrado"); 
@@ -7,17 +8,11 @@ document.getElementById("icon_menu").addEventListener("click", function(){ //alt
 
 
 
-//Para ejecutar funcion al hacer click en un "nav a" (link href) y cargar html con partial render
-const main = document.querySelector("main");
-const links = document.querySelectorAll("nav a");
-links.forEach(unLink => {
-    unLink.addEventListener("click", function(evento){
-        evento.preventDefault();
-        let paginaACargar = this.getAttribute("href");
 
-        cargarPagina(paginaACargar);
-    }); //addEventListener
-}); //links.forEach
+//Asignar una funcion al hacer click en un "nav a" (link href) que cargue html con partial render
+linksNav(); 
+//Asignar una funcion al hacer click en un "footer a" (link href) que cargue html con partial render
+linksFooter();
 
 
 
@@ -99,6 +94,36 @@ function linksMain(){
     }); //links.forEach
 } // linksMain
 
+
+
+//Asignar una funcion al hacer click en un "nav a" (link href) que cargue html con partial render
+function linksNav(){
+    const links = document.querySelectorAll("nav a");
+    links.forEach(unLink => {
+        unLink.addEventListener("click", function(evento){
+            evento.preventDefault();
+            let paginaACargar = this.getAttribute("href");
+
+            cargarPagina(paginaACargar);
+        }); //addEventListener
+    }); //links.forEach
+} //linksNav
+
+
+//Asignar una funcion al hacer click en un "nav a" (link href) que cargue html con partial render
+function linksFooter(){
+    const links = document.querySelectorAll("footer a");
+    links.forEach(unLink => {
+        if (!unLink.classList.contains("externo")){
+            unLink.addEventListener("click", function(evento){
+                evento.preventDefault();
+                let paginaACargar = this.getAttribute("href");
+
+                cargarPagina(paginaACargar);
+            }); //addEventListener
+        } //if
+    }); //links.forEach
+} //linksNav
 
 
 
@@ -480,7 +505,7 @@ function alumnos(){
     
         //invoco a alta con ese alumno
         altaAlumno(alumno);
-        //leerAlumnos();
+        //setTimeOut(leerAlumnos(), 3000);
     } //nuevoAlumno
     
     
