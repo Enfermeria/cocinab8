@@ -40,15 +40,24 @@ chkBoxModoOscuro.addEventListener("click", function(){//al clickear el checkbox 
 
 
 
+// Agrego un eventListener al evento popstate (cuando se clickea el botón retroceder/avanzar del navegador)
+window.addEventListener("popstate", event => {
+    if (event.state!=null) {
+        let paginaACargar = event.state.pagina;   // Obtengo el state del history
+        cargarPagina(paginaACargar, true); // Cargo el contentido para esta página
+    }
+});
+
+
 
 //cargo la página principal
-cargarPagina("principal.html");
+cargarPagina("principal.html", false);
 
 
 
 
 //funcion que carga html con partial render
-function cargarPagina(paginaACargar){
+function cargarPagina(paginaACargar, volviendoDeHistory){
     //cargo la página
     main.innerHTML = "<h1><br><br><br><br>Cargando...<br><br><br><br></h1>";
     fetch(paginaACargar)
@@ -70,6 +79,10 @@ function cargarPagina(paginaACargar){
 
             // vinculo todos los links de la página main para que usen partial render
             linksMain();
+
+            // Agrego el cambio de estado a la barra de direcciones (con push state) si no está volviendo del history
+            if (!volviendoDeHistory)
+                window.history.pushState({"pagina":paginaACargar} , `${paginaACargar}`, `/${paginaACargar}`);
         }) //then html
         .catch(error => {
             main.innerHTML = "<h1><br><br><br><br>Error - Conexión falló!</h1>" + error;
@@ -88,7 +101,7 @@ function linksMain(){
             unLink.addEventListener("click", function(evento){
                 evento.preventDefault();
                 let paginaACargar = this.getAttribute("href");
-                cargarPagina(paginaACargar);
+                cargarPagina(paginaACargar, false);
             }); //addEventListener
         } //if
     }); //links.forEach
@@ -104,7 +117,7 @@ function linksNav(){
             evento.preventDefault();
             let paginaACargar = this.getAttribute("href");
 
-            cargarPagina(paginaACargar);
+            cargarPagina(paginaACargar, false);
         }); //addEventListener
     }); //links.forEach
 } //linksNav
@@ -119,7 +132,7 @@ function linksFooter(){
                 evento.preventDefault();
                 let paginaACargar = this.getAttribute("href");
 
-                cargarPagina(paginaACargar);
+                cargarPagina(paginaACargar, false);
             }); //addEventListener
         } //if
     }); //links.forEach

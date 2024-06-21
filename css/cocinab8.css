@@ -103,14 +103,14 @@
         La api web del mockapi está en:
             https://666f2da5f1e1da2be5223295.mockapi.io/api/v1/alumnos
     2.- SPA / Partial Render: se usa AJAX para la navegación de la página (técnica de partial render). 
-        La página no se refrescar completamente, cuando hago click en un link de la navigation bar se refresca sólo la porción main,
+        La página no se refresca completamente, cuando hago click en un link de la navigation bar se refresca sólo la porción main,
         cargando la parte de información que cambia. 
         Nota: se excluye del partial render los vínculos a páginas de noticias exteriores (infobae, clarín, etc.) por decisión de diseño
               se cargarán en una pestaña nueva.
     3.- Paginación: se traer la información del servicio rest de forma paginada. Para ello se usan los botones "siguiente página y 
         "página previa" para navegar entre las páginas de grupos de alumnos.
-    4.- Creación de Items: Hay un botón "Nuevos alumno aleatorio" que genera aleatoriamente los datos de un alumno (cuantas veces se quiera)
-        y lo agrega al servicio. El nombres se elige aleatoriamente de entre 100 nombres y se combina con casi 70 apellidos aleatorios 
+    4.- Creación de Items: Hay un botón "Nuevo alumno aleatorio" que genera aleatoriamente los datos de un alumno (cuantas veces se quiera)
+        y lo agrega al servicio. El nombre se elige aleatoriamente de entre 100 nombres y se combina con casi 70 apellidos aleatorios 
         posibles (lo que da más de 7000 nombres completos posibles). Luego en base al nombre y apellido se genera aleatoriamente un mail 
         tomando el nombre, o el apellido, o la primer letra del nombre y el apellido, o el nombre y la primer letra del apellido. A ello se
         le pueden agregar en algunos casos un número de 2 dígitos y finalmente se asocia a uno de 5 servicios comunes de mail.
