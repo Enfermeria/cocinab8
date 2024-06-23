@@ -41,13 +41,13 @@ chkBoxModoOscuro.addEventListener("click", function(){//al clickear el checkbox 
 
 
 // Agrego un eventListener al evento popstate (cuando se clickea el botón retroceder/avanzar del navegador)
-window.addEventListener("popstate", event => {
+/*window.addEventListener("popstate", event => {
     if (event.state!=null) {
         let paginaACargar = event.state.pagina;   // Obtengo el state del history
         cargarPagina(paginaACargar, true); // Cargo el contentido para esta página
     }
 });
-
+*/
 
 
 //cargo la página principal
@@ -81,8 +81,8 @@ function cargarPagina(paginaACargar, volviendoDeHistory){
             linksMain();
 
             // Agrego el cambio de estado a la barra de direcciones (con push state) si no está volviendo del history
-            if (!volviendoDeHistory)
-                window.history.pushState({"pagina":paginaACargar} , `${paginaACargar}`, `/${paginaACargar}`);
+            //if (!volviendoDeHistory)
+            //    window.history.pushState({"pagina":paginaACargar} , `${paginaACargar}`, `/${paginaACargar}`);
         }) //then html
         .catch(error => {
             main.innerHTML = "<h1><br><br><br><br>Error - Conexión falló!</h1>" + error;
